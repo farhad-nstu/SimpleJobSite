@@ -11,21 +11,11 @@ class HomeController extends Controller
 
     protected $redirectTo = '/company/login';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('company.auth:company');
     }
 
-    /**
-     * Show the Company dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $jobs = Job::all();

@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-// use Intervention\Image\Facades\Image;
 use Image;
 
 class ProfileController extends Controller
@@ -18,8 +17,13 @@ class ProfileController extends Controller
     public function index($id)
     {
         $applicant = Applicant::find($id);
-        // dd($applicant->first_name);
-    	return view('applicant.profile.index', compact('applicant'));
+        $resume = $applicant->resume;
+        $data = \substr($resume, 16);
+        $extension = \File::extension($data);
+        // $extension = $data->extension();
+        // $resume->getClientOriginalExtension();
+        // dd($extension);
+    	return view('applicant.profile.index', compact('applicant', 'extension'));
     }
 
     public function edit($id)
@@ -80,10 +84,9 @@ class ProfileController extends Controller
         $user = Applicant::find($id);
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
-        $user->resume =  $request->resume;
         $user->skill =  $request->skill;
 
-        $image = $request->file('image');        
+        $image = $request->file('image');    
         if($image) {
             $random = mt_rand(10000, 99999);
             $imageName  = $random.'1'.'.'.$image->getClientOriginalExtension();
@@ -106,25 +109,32 @@ class ProfileController extends Controller
         return redirect(route('profile.index', $user->id))->with('message', 'profile update successfully');
     }
 
-    public function show(){
-    	$jobs = job::all();
-    	return view('applicant.profile.showjob',compact('jobs'));
-    }
-
     public function job_apply($user_id, $job_id)
     {
         $applicant = Applicant::find($user_id);
+        $applicantJobId = $applicant->job_id;
+        // dd($applicantJobId);
         if($applicant->resume){
-            $applicant->is_applied = 1;
-            $applicant->job_id = $job_id;
-            $applicant->update();
-            return redirect(route('profile.showjob'))->with('message', 'Applied successfully');
+            if($applicant->is_applied == 1 && $applicantJobId == $job_id){
+                return redirect()>back()->with('message', 'Already applied');
+            } else {
+                $applicant->is_applied = 1;
+                $applicant->job_id = $job_id;
+                $applicant->update();
+                return redirect()->back()->with('message', 'Applied successfully');
+            }
         } else {
             return redirect(route('profile.edit', $user_id))->with('message', 'Upload your resume first!');
         }
         
     }
 
+    public function view_resume($id)
+    {
+        $applicant = Applicant::find($id);
+        $data = $applicant->resume;
+        return view('applicant.resume', compact('data'));
+    }
 
 
 }

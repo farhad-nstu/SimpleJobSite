@@ -20,7 +20,7 @@ class CreateJobsTable extends Migration
             $table->string('salary');
             $table->string('location');
             $table->string('country');
-            // $table->integer('comp_id');
+            $table->string('deadline')->nullable();
             $table->timestamps();
         });
     }

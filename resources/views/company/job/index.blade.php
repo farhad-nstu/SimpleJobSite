@@ -25,6 +25,7 @@
                 <td>Salary</td>
                 <td>Location</td>
                 <td>Creation Time</td>
+                <td>Deadline</td>
                 <td>Actions</td>
               </tr>
             </thead>
@@ -40,16 +41,19 @@
                 <td data-title="Date">
                   <time datetime="{{ $job->created_at}}">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $job->created_at)->format('d-M-y') }}</time>
                 </td>
+                <td data-title="Date">
+                  <time datetime="{{ $job->deadline}}">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $job->deadline)->format('d-M-y') }}</time>
+                </td>
                 <td>
                   <a class="btn btn-sm btn-success" href="{{ route('job.edit', $job->id) }}"><span class="fa fa-edit"></span></a>
 
                   <a href="#" class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $job->id }}').submit();" ><span class="fa fa-trash"></span></a>
 
-              <form id="delete-form-{{ $job->id }}" action="{{ route('job.destroy',$job->id) }}" method="POST" style="display: none;">
-                  @csrf @method('delete')
-              </form>
-
+                  <form id="delete-form-{{ $job->id }}" action="{{ route('job.destroy',$job->id) }}" method="POST" style="display: none;">
+                      @csrf @method('delete')
+                  </form>
                 </td>
+
               </tr>
             @endforeach
             </tbody>

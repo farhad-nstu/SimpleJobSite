@@ -24,9 +24,10 @@ Route::group(['namespace' => 'Company'], function() {
     Route::get('email/verify/{id}','Auth\VerificationController@verify')->name('company.verification.verify');
 
 
-Route::resource('job','JobController'); 
-// Route::get('applicants-list','JobController@get_applicants_list')->name('job.applicants_list');
-Route::get('applicant/{id}','JobController@show_applicant')->name('applicant.show');
-Route::get('applicants/{id}','JobController@applicant_destroy')->name('applicant.destroy');
+    Route::resource('job','JobController'); 
+    // Route::get('applicants-list','JobController@get_applicants_list')->name('job.applicants_list');
+    Route::get('applicant/{id}','JobController@view_applicant')->name('applicant.show');
+    Route::get('applicants/{id}','JobController@applicant_destroy')->name('applicant.destroy');
+    Route::get('view-resume/{id}','JobController@view_resume')->name('view.applicant.resume');
 
 });

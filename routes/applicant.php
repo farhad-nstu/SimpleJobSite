@@ -23,11 +23,9 @@ Route::group(['namespace' => 'Applicant'], function() {
     Route::get('email/verify','Auth\VerificationController@show')->name('applicant.verification.notice');
     Route::get('email/verify/{id}','Auth\VerificationController@verify')->name('applicant.verification.verify');
 
-  Route::get('/profile/{id}',[ 
-
+    Route::get('/profile/{id}',[ 
         'uses' => 'ProfileController@index',
-        'as'   => 'profile.index'
-       
+        'as'   => 'profile.index'       
     ]);
 
     Route::get('/profile/edit/{id}', [
@@ -36,24 +34,23 @@ Route::group(['namespace' => 'Applicant'], function() {
     ]);
 
     Route::put('/profile/update/{id}',[ 
-
         'uses' => 'ProfileController@update',
-        'as'   => 'profile.update'
-       
+        'as'   => 'profile.update'       
     ]);
 
-    Route::get('/profile/job/show',[ 
-
-        'uses' => 'ProfileController@show',
-        'as'   => 'profile.showjob'
-       
-    ]);
+    // Route::get('/profile/job/show',[ 
+    //     'uses' => 'ProfileController@show',
+    //     'as'   => 'profile.showjob'       
+    // ]);
 
     Route::get('/job-apply/{user_id}/{job_id}',[ 
-
         'uses' => 'ProfileController@job_apply',
-        'as'   => 'job.apply'
-       
+        'as'   => 'job.apply'       
+    ]);
+
+    Route::get('/view-resume/{id}',[ 
+        'uses' => 'ProfileController@view_resume',
+        'as'   => 'view.file'       
     ]);
 
 

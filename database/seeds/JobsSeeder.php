@@ -19,40 +19,54 @@ class JobsSeeder extends Seeder
                 'description' => 'We are hiring a Laravel developr',
                 'created_at' => '2020-02-11 11:20:30',
                 'salary' => '30-40k',
-                'location' => 'Merul Badda',
-                'country' => 'Bangladesh'
+                'location' => 'Merul Badda, Dhaka',
+                'country' => 'Bangladesh',
+                'deadline' => '2020-10-11 11:20:30'
             ],
             [
                 'title' => 'Vue Js Developer',
                 'description' => 'We are hiring a Vue Js developr',
                 'created_at' => '2020-02-11 11:20:30',
                 'salary' => '45-50k',
-                'location' => 'Nikunjo 2',
-                'country' => 'Bangladesh'
+                'location' => 'Nikunjo 2, Dhaka',
+                'country' => 'Bangladesh',
+                'deadline' => '2020-10-11 11:20:30'
             ],
             [
                 'title' => 'Javascript Developer',
                 'description' => 'We are hiring a Javascript developr',
                 'created_at' => '2020-02-11 11:20:30',
                 'salary' => '20-25k',
-                'location' => 'Uttara',
-                'country' => 'Bangladesh'
+                'location' => 'Uttara, Dhaka',
+                'country' => 'Bangladesh',
+                'deadline' => '2020-10-11 11:20:30'
             ],
             [
                 'title' => 'PHP Developer',
                 'description' => 'We are hiring a PHP developr',
                 'created_at' => '2020-02-11 11:20:30',
                 'salary' => '30-40k',
-                'location' => 'Mogbazar',
-                'country' => 'Bangladesh'
+                'location' => 'Mogbazar, Dhaka',
+                'country' => 'Bangladesh',
+                'deadline' => '2020-10-11 11:20:30'
             ],
             [
                 'title' => 'React js Developer',
                 'description' => 'We are hiring a React developr',
                 'created_at' => '2020-02-11 11:20:30',
                 'salary' => '30-40k',
-                'location' => 'Merul Badda',
-                'country' => 'Bangladesh'
+                'location' => 'Merul Badda, Dhaka',
+                'country' => 'Bangladesh',
+                'deadline' => '2020-10-11 11:20:30'
+            ],
+            [
+                'title' => 'Angular js Developer',
+                'description' => 'We are hiring a Angular Js developr',
+                'created_at' => '2020-02-11 11:20:30',
+                'salary' => '30-40k',
+                'location' => 'Malibagh, Dhaka',
+                'country' => 'Bangladesh',
+                'deadline' => '2020-10-11 11:20:30'
             ],                  
 
         ]);
